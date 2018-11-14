@@ -5,13 +5,8 @@ module.exports = {
             {
                 test: /\.(js|jsx|mjs|ts|tsx)$/,
                 exclude: /node_modules/,
-                use: ['babel-loader', 'source-map-loader'],
+                use: ['babel-loader', 'eslint-loader', 'source-map-loader'],
                 enforce: 'pre'
-            },
-            {
-              test: /\.js$/,
-              exclude: /node_modules/,
-              use: ['babel-loader', 'eslint-loader']
             }
         ]
     },
