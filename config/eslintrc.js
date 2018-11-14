@@ -49,12 +49,13 @@ module.exports = {
             },
         ],
         "no-underscore-dangle": ["off"],
-        "quotes": ["error", "double"],
-        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "semi": ["error", "never"],
         "symbol-description": "off",
 
-        "react/jsx-indent": ["error", 4],
-        "react/jsx-indent-props": ["error", 4],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-indent": ["error", 2],
+        "react/jsx-indent-props": ["error", 2],
         "react/prop-types": ["error", {
             "ignore": ["dispatch", "saveParameters", "intl"],
             "customValidators": [],
