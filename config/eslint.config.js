@@ -1,25 +1,16 @@
-module.exports = {
-  env: {
-    browser: true,
-    es6: true,
-    jest: true
-  },
+module.exports = function(argv) {
+  var esExtends = ['plugin:prettier/recommended']
 
-  extends: ['plugin:prettier/recommended'],
-
-  parserOptions: {
+  var parserOptions = {
     ecmaFeatures: {
-      experimentalObjectRestSpread: true,
-      jsx: true
+      experimentalObjectRestSpread: true
     },
     sourceType: 'module'
-  },
+  }
 
-  plugins: ['prettier'],
+  var plugins = ['prettier']
 
-  parser: 'babel-eslint',
-
-  rules: {
+  var rules = {
     'arrow-parens': ['error', 'as-needed'],
     'class-methods-use-this': 'off',
     'comma-dangle': [
@@ -52,7 +43,10 @@ module.exports = {
     ],
     'no-underscore-dangle': ['off'],
     'no-unused-vars': ['error'],
-    'no-use-before-define': ['error'],
+    'no-use-before-define': ['error', {functions: false, variables: false}],
+    'no-void': 'off',
+    'object-curly-spacing': ['error', 'never'],
+    'object-shorthand': ['error', 'always'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'symbol-description': 'off',
@@ -63,5 +57,52 @@ module.exports = {
     'import/prefer-default-export': ['off'],
 
     'prettier/prettier': 'error'
+  }
+
+  if (argv.isReact) {
+    esExtends = esExtends.concat('airbnb')
+
+    parserOptions.ecmaFeatures.jsx = true
+
+    plugins = plugins.concat('react')
+
+    var rulesReact = {
+      'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx']}],
+      'react/jsx-indent': ['error', 2],
+      'react/jsx-indent-props': ['error', 2],
+      'react/prop-types': [
+        'error',
+        {
+          ignore: ['dispatch', 'saveParameters', 'intl'],
+          customValidators: [],
+          skipUndeclared: false
+        }
+      ],
+      'react/forbid-prop-types': [
+        'error',
+        {
+          forbid: ['array', 'any']
+        }
+      ]
+    }
+    rules = Object.assign({}, rules, rulesReact)
+  }
+
+  return {
+    env: {
+      browser: true,
+      es6: true,
+      jest: true
+    },
+
+    extends: esExtends,
+
+    parserOptions: parserOptions,
+
+    plugins: plugins,
+
+    parser: 'babel-eslint',
+
+    rules: rules
   }
 }
