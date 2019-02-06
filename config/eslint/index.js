@@ -7,9 +7,15 @@ module.exports = {
     es6: true
   },
 
-  extends: ['plugin:prettier/recommended', 'eslint:recommended', './rules/errors', './rules/best-practices', './rules/es6', './rules/style', './rules/variables'].map(
-    require.resolve
-  ),
+  extends: [
+    'plugin:prettier/recommended',
+    'eslint:recommended',
+    require.resolve('./rules/best-practices'),
+    require.resolve('./rules/errors'),
+    require.resolve('./rules/es6'),
+    require.resolve('./rules/style'),
+    require.resolve('./rules/variables')
+  ],
 
   parserOptions: {
     ecmaVersion: 10,
@@ -19,22 +25,9 @@ module.exports = {
     }
   },
 
-  plugins: ['babel', 'jest', 'jsx-a11y', 'react'],
+  plugins: ['babel', 'jest', 'jsx-a11y', 'prettier', 'react'],
 
   parser: 'babel-eslint',
 
-  rules: {
-    /* Variables */
-    'init-declarations': [ERROR, 'always'],
-    'no-label-var': ERROR,
-
-    /* ECMAScript 6 */
-
-    /* stylistic */
-    indent: [ERROR, 2],
-    'linebreak-style': [ERROR, 'unix'],
-    'comma-dangle': [ERROR, 'never'],
-    quotes: [ERROR, 'single'],
-    semi: [ERROR, 'never']
-  }
+  rules: {}
 }
