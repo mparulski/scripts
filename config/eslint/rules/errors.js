@@ -21,7 +21,7 @@ module.exports = {
     'no-ex-assign': ERROR,
     'no-extra-boolean-cast': ERROR,
     'no-extra-parens': [
-      'off',
+      OFF,
       'all',
       {
         conditionalAssign: true,
