@@ -1,2 +1,2 @@
-# mp-scripts
+# scripts
 Common scripts for my projects
