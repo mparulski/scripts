@@ -1,11 +1,14 @@
-var BABEL = 'babel'
-var TYPESCRIPT = 'typescript'
+const BABEL = 'babel'
+const TYPESCRIPT = 'typescript'
 
-var defaultConfig = {
-  parser: BABEL // BABEL | TYPESCRIPT
+const getIfDep = (has, dep) => (has ? dep : '')
+
+const defaultConfig = {
+  parser: BABEL, // BABEL | TYPESCRIPT
+  react: true // true | false
 }
 
-var getParser = function(option) {
+const getParser = function (option) {
   switch (option) {
     case TYPESCRIPT:
       return '@typescript-eslint/parser'
@@ -14,32 +17,31 @@ var getParser = function(option) {
   }
 }
 
-module.exports = function(config = defaultConfig) {
+module.exports = function (config = defaultConfig) {
   return {
     env: {
-      amd: true,
       browser: true,
       commonjs: true,
       es6: true,
       jest: true,
-      node: true,
-      worker: true
     },
 
-    extends: ['./rules/best-practices', './rules/errors', './rules/es6', './rules/style', './rules/variables'].map(require.resolve),
+    extends: ['./rules/best-practices', './rules/errors', './rules/es6', './rules/style', './rules/variables', getIfDep(config.react, './react/react')]
+      .filter(Boolean)
+      .map(require.resolve),
 
     parserOptions: {
       ecmaVersion: 2019,
       sourceType: 'module',
       ecmaFeatures: {
-        jsx: true
-      }
+        jsx: true,
+      },
     },
 
-    plugins: ['jest', 'jsx-a11y', 'prettier', 'react'],
+    plugins: ['jest', 'jsx-a11y', 'prettier', getIfDep(config.react, 'react')],
 
     parser: getParser(config.parser),
 
-    rules: {}
+    rules: {},
   }
 }
