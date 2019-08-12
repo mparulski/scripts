@@ -1,25 +1,45 @@
-const ERROR = 2
+var BABEL = 'babel'
+var TYPESCRIPT = 'typescript'
 
-module.exports = {
-  env: {
-    browser: true,
-    commonjs: true,
-    es6: true
-  },
+var defaultConfig = {
+  parser: BABEL // BABEL | TYPESCRIPT
+}
 
-  extends: ['./rules/best-practices', './rules/errors', './rules/es6', './rules/style', './rules/variables'].map(require.resolve),
+var getParser = function(option) {
+  switch (option) {
+    case TYPESCRIPT:
+      return '@typescript-eslint/parser'
+    default:
+      return 'babel-eslint'
+  }
+}
 
-  parserOptions: {
-    ecmaVersion: 10,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true
-    }
-  },
+module.exports = function(config = defaultConfig) {
+  return {
+    env: {
+      amd: true,
+      browser: true,
+      commonjs: true,
+      es6: true,
+      jest: true,
+      node: true,
+      worker: true
+    },
 
-  plugins: ['jest', 'jsx-a11y', 'prettier', 'react'],
+    extends: ['./rules/best-practices', './rules/errors', './rules/es6', './rules/style', './rules/variables'].map(require.resolve),
 
-  parser: 'babel-eslint',
+    parserOptions: {
+      ecmaVersion: 2019,
+      sourceType: 'module',
+      ecmaFeatures: {
+        jsx: true
+      }
+    },
 
-  rules: {}
+    plugins: ['jest', 'jsx-a11y', 'prettier', 'react'],
+
+    parser: getParser(config.parser),
+
+    rules: {}
+  }
 }
