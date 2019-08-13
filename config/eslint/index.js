@@ -8,7 +8,7 @@ const defaultConfig = {
   react: true // true | false
 }
 
-const getParser = function (option) {
+const getParser = (option) => {
   switch (option) {
     case TYPESCRIPT:
       return '@typescript-eslint/parser'
@@ -17,33 +17,40 @@ const getParser = function (option) {
   }
 }
 
-module.exports = function (config = defaultConfig) {
-  return {
-    env: {
-      browser: true,
-      commonjs: true,
-      es6: true,
-      jest: true,
+module.exports = (config = defaultConfig) => ({
+  env: {
+    browser: true,
+    commonjs: true,
+    es6: true,
+    jest: true,
+  },
+
+  extends: [
+    './rules/best-practices',
+    './rules/errors',
+    './rules/es6',
+    './rules/style',
+    './rules/variables',
+    getIfDep(config.react, './react/react')
+  ].filter(Boolean)
+    .map(require.resolve),
+
+  parserOptions: {
+    ecmaVersion: 2019,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
     },
+  },
 
-    extends: ['./rules/best-practices', './rules/errors', './rules/es6', './rules/style', './rules/variables', getIfDep(config.react, './react/react')]
-      .filter(Boolean)
-      .map(require.resolve),
+  plugins: [
+    'jest',
+    'prettier',
+    getIfDep(config.react, 'react'),
+    getIfDep(config.react, 'jsx-a11y')
+  ].filter(Boolean),
 
-    parserOptions: {
-      ecmaVersion: 2019,
-      sourceType: 'module',
-      ecmaFeatures: {
-        jsx: true,
-      },
-    },
+  parser: getParser(config.parser),
 
-    plugins: ['jest', 'jsx-a11y', 'prettier', getIfDep(config.react, 'react')]
-      .filter(Boolean)
-      .map(require.resolve),
-
-    parser: getParser(config.parser),
-
-    rules: {},
-  }
-}
+  rules: {},
+})

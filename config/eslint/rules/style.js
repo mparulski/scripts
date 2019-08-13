@@ -11,16 +11,7 @@ module.exports = {
     'brace-style': [ERROR, '1tbs', {allowSingleLine: true}],
     camelcase: [ERROR, {properties: 'always'}],
     'capitalized-comments': OFF,
-    'comma-dangle': [
-      ERROR,
-      {
-        arrays: 'always-multiline',
-        objects: 'always-multiline',
-        imports: 'always-multiline',
-        exports: 'always-multiline',
-        functions: 'always-multiline'
-      }
-    ],
+    'comma-dangle': [ERROR, 'never'],
     'comma-spacing': [ERROR, {before: false, after: true}],
     'comma-style': [
       ERROR,
@@ -44,7 +35,6 @@ module.exports = {
     'computed-property-spacing': [ERROR, 'never'],
     'consistent-this': OFF,
     'eol-last': [ERROR, 'always'],
-    'func-call-spacing': [ERROR, 'never'],
     'func-call-spacing': [ERROR, 'never'],
     'func-name-matching': [OFF, 'always', {includeCommonJSModuleExports: false}],
     'func-names': WARNING,
@@ -198,7 +188,7 @@ module.exports = {
     'no-unneeded-ternary': [ERROR, {defaultAssignment: false}],
     'no-whitespace-before-property': ERROR,
     'nonblock-statement-body-position': [ERROR, 'below', {overrides: {}}],
-    'object-curly-spacing': [ERROR, 'always'],
+    'object-curly-spacing': [ERROR, 'never'],
     'object-curly-newline': [
       ERROR,
       {
