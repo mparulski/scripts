@@ -38,7 +38,9 @@ module.exports = function (config = defaultConfig) {
       },
     },
 
-    plugins: ['jest', 'jsx-a11y', 'prettier', getIfDep(config.react, 'react')],
+    plugins: ['jest', 'jsx-a11y', 'prettier', getIfDep(config.react, 'react')]
+      .filter(Boolean)
+      .map(require.resolve),
 
     parser: getParser(config.parser),
 
