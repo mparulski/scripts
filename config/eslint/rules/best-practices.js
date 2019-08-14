@@ -32,7 +32,6 @@ module.exports = {
     'no-fallthrough': ERROR,
     'no-floating-decimal': ERROR,
     'no-global-assign': ERROR,
-    'no-native-reassign': OFF,
     'no-implicit-coercion': [ERROR, {boolean: false, number: true, string: true, allow: []}],
     'no-implicit-globals': OFF,
     'no-implied-eval': ERROR,

@@ -208,7 +208,6 @@ module.exports = {
     'prefer-object-spread': OFF,
     'quote-props': [ERROR, 'as-needed', {keywords: false, unnecessary: true, numbers: false}],
     quotes: [ERROR, 'single', {avoidEscape: true}],
-    'require-jsdoc': OFF,
     semi: [ERROR, 'never'],
     'semi-spacing': [ERROR, {before: false, after: true}],
     'semi-style': [ERROR, 'last'],
