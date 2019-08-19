@@ -35,6 +35,7 @@ module.exports = {
     'computed-property-spacing': [ERROR, 'never'],
     'consistent-this': OFF,
     'eol-last': [ERROR, 'always'],
+    'function-call-argument-newline': [ERROR, 'consistent'],
     'func-call-spacing': [ERROR, 'never'],
     'func-name-matching': [OFF, 'always', {includeCommonJSModuleExports: false}],
     'func-names': WARNING,
