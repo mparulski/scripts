@@ -29,8 +29,10 @@ module.exports = (config = defaultConfig) => ({
     './rules/best-practices',
     './rules/errors',
     './rules/es6',
+    './rules/strict',
     './rules/style',
     './rules/variables',
+    './extra/import',
     getIfDep(config.react, './react/react')
   ].filter(Boolean)
     .map(require.resolve),
