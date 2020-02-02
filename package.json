@@ -17,15 +17,24 @@
   },
   "homepage": "https://github.com/mparulski/mp-scripts#readme",
   "dependencies": {
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
+  },
+  "devDependencies": {
     "@babel/cli": "7.8.4",
     "@babel/core": "7.8.4",
     "@babel/plugin-transform-arrow-functions": "7.8.3",
+    "@babel/plugin-transform-modules-commonjs": "7.8.3",
     "@babel/preset-env": "7.8.4",
     "@babel/preset-react": "7.8.3",
     "@babel/runtime": "7.8.4",
+    "@testing-library/jest-dom": "5.1.0",
+    "@testing-library/react": "9.4.0",
     "@typescript-eslint/eslint-plugin": "2.18.0",
     "@typescript-eslint/parser": "2.18.0",
     "babel-eslint": "10.0.3",
+    "babel-jest": "25.1.0",
+    "babel-loader": "8.0.6",
     "babel-plugin-dynamic-import-node": "2.3.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.10.0",
@@ -36,15 +45,8 @@
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-react": "7.18.2",
     "eslint-plugin-react-hooks": "2.3.0",
+    "jest": "25.1.0",
     "prettier": "1.19.1",
-    "prettier-eslint": "9.0.1",
-    "react": "16.12.0",
-    "react-dom": "16.12.0"
-  },
-  "devDependencies": {
-    "@testing-library/jest-dom": "5.1.0",
-    "@testing-library/react": "9.4.0",
-    "babel-jest": "25.1.0",
-    "jest": "25.1.0"
+    "prettier-eslint": "9.0.1"
   }
 }
