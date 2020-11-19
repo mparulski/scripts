@@ -1,6 +1,6 @@
 {
   "name": "@mparulski/scripts",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Common scripts for projects",
   "main": "index.js",
   "scripts": {
